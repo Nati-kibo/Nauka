@@ -425,6 +425,10 @@ void bezSpacji()
 	for (int i = 0;i < tekst.size();i++) {
 		if (tekst.at(i) == 32) {
 			tekst.erase(tekst.begin() + i);
+<<<<<<< HEAD
+=======
+			// chyba tak
+>>>>>>> 5d57e3798386f62d4e993251903599fa23585b16
 			i--;
 		}
 	}
