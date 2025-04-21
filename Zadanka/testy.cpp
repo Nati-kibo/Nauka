@@ -423,8 +423,14 @@ void bezSpacji()
 	std::string tekst;
 	std::getline(std::cin, tekst);
 	for (int i = 0;i < tekst.size();i++) {
-		if (tekst.at(i) == 32)
-			tekst.at(i) = 0;
+		if (tekst.at(i) == 32) {
+			tekst.erase(tekst.begin() + i);
+<<<<<<< HEAD
+=======
+			// chyba tak
+>>>>>>> 5d57e3798386f62d4e993251903599fa23585b16
+			i--;
+		}
 	}
 	std::cout << tekst;
 }
