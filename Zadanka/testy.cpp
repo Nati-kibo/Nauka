@@ -476,15 +476,24 @@ void wskazniki()
 		std::cout << *it<< ", ";
 	}
 }
-void ZerujWieksze(int*ptr_liczba_1, int &adres_liczba_2, int max)
+void ZerujWieksze(int &ptr_liczba_1, int &adres_liczba_2, int max)
 {
-	std::cout << ptr_liczba_1 << ' ' << &adres_liczba_2;
-	for (auto it = ptr_liczba_1; it != &adres_liczba_2;it += 4)
-	{
-		if (*it > max)
-			*it = 0;
-		std::cout << *it<<' ';
+	for (auto it = 0; it < 5; it++) {
+		std::cout << *(&ptr_liczba_1 + it) << " o adresie: " << (&ptr_liczba_1 + it) << std::endl;
 	}
+	//for (auto it = ptr_liczba_1; it != adres_liczba_2; it ++)
+	//{
+	//	std::cout << it << ' ' << *it << std::endl;
+	//	std::cout << "Rozmiar " << sizeof(it) << " " << sizeof(*it) << " " << sizeof(max) << " " << sizeof(&*it) << std::endl;
+	//	//++it;
+	//	//std::cout << it << ' ' << *it <<' ' << **it << std::endl;
+	//	
+	//	/*if (*it > max) {
+	//		std::cout << *it << " ";
+	//		*it = 0;
+	//		std::cout << *it << std::endl;
+	//	}*/
+	//}
 }
 int main()
 {
@@ -509,11 +518,21 @@ int main()
 	//palindrom();
 	//szyfrCezara();
 	//wskazniki();
-	std::vector<int> tablica = { 2, 5, 8, 10, 15 };
-	int liczba_1 = tablica.front(), liczba_2 = tablica.back(), max = 10;
-	ZerujWieksze(&liczba_1, liczba_2, max);
-	for (auto it = tablica.begin(); it != tablica.end();it++) {
-		std::cout << &*it << ", ";
+	int tablica[] = {2, 5, 8, 10, 15};
+	for (auto it : tablica) {
+		std::cout << it << " o adresie: " << &it << std::endl;
 	}
+	for (auto it = 0; it < 5; it++) {
+		std::cout << tablica[it] << " o adresie: " << &tablica[it] << std::endl;
+	}
+	int liczba_1 = tablica[0], liczba_2 = tablica[4], max = 10;
+	int wsk_poczatek = liczba_1;
+	int wsk_koniec = liczba_2;
+
+
+	ZerujWieksze(wsk_poczatek, wsk_koniec, max);
+	/*for (auto it = tablica.begin(); it != tablica.end();it++) {
+		std::cout << &*it << ", ";
+	}*/
 	return 0;
 }
