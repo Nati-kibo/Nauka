@@ -425,10 +425,7 @@ void bezSpacji()
 	for (int i = 0;i < tekst.size();i++) {
 		if (tekst.at(i) == 32) {
 			tekst.erase(tekst.begin() + i);
-<<<<<<< HEAD
-=======
 			// chyba tak
->>>>>>> 5d57e3798386f62d4e993251903599fa23585b16
 			i--;
 		}
 	}
@@ -482,24 +479,16 @@ void wskazniki()
 		std::cout << *it<< ", ";
 	}
 }
-void ZerujWieksze(int &ptr_liczba_1, int &adres_liczba_2, int max)
+void ZerujWieksze(int *ptr_liczba_1, int *adres_liczba_2, int max)
 {
-	for (auto it = 0; it < 5; it++) {
-		std::cout << *(&ptr_liczba_1 + it) << " o adresie: " << (&ptr_liczba_1 + it) << std::endl;
-	}
-	//for (auto it = ptr_liczba_1; it != adres_liczba_2; it ++)
-	//{
-	//	std::cout << it << ' ' << *it << std::endl;
-	//	std::cout << "Rozmiar " << sizeof(it) << " " << sizeof(*it) << " " << sizeof(max) << " " << sizeof(&*it) << std::endl;
-	//	//++it;
-	//	//std::cout << it << ' ' << *it <<' ' << **it << std::endl;
-	//	
-	//	/*if (*it > max) {
-	//		std::cout << *it << " ";
-	//		*it = 0;
-	//		std::cout << *it << std::endl;
-	//	}*/
-	//}
+	/*for (auto it = 0; it < 5; it++) {
+		std::cout << *(&ptr_liczba_1 + it) << " o adresie: " << (&ptr_liczba_1 + it) << std::endl<<&it;
+	}*/
+	std::cout << *ptr_liczba_1 << ' ' << *adres_liczba_2 << *(0x00000020FB52F76C);
+	/*for (auto it = &ptr_liczba_1;it <= &adres_liczba_2;it++)
+	{
+		std::cout << &it<<' ' << *(it++)<<'\n';
+	}*/
 }
 int main()
 {
@@ -525,20 +514,15 @@ int main()
 	//szyfrCezara();
 	//wskazniki();
 	int tablica[] = {2, 5, 8, 10, 15};
-	for (auto it : tablica) {
-		std::cout << it << " o adresie: " << &it << std::endl;
-	}
+
 	for (auto it = 0; it < 5; it++) {
-		std::cout << tablica[it] << " o adresie: " << &tablica[it] << std::endl;
+		std::cout << tablica[it] << " o adresie: " << &tablica[it] << std::endl; 
 	}
+
 	int liczba_1 = tablica[0], liczba_2 = tablica[4], max = 10;
 	int wsk_poczatek = liczba_1;
 	int wsk_koniec = liczba_2;
 
-
-	ZerujWieksze(wsk_poczatek, wsk_koniec, max);
-	/*for (auto it = tablica.begin(); it != tablica.end();it++) {
-		std::cout << &*it << ", ";
-	}*/
+	ZerujWieksze(&wsk_poczatek, &wsk_koniec, max);
 	return 0;
 }
