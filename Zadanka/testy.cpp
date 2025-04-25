@@ -479,16 +479,30 @@ void wskazniki()
 		std::cout << *it<< ", ";
 	}
 }
-void ZerujWieksze(int *ptr_liczba_1, int *adres_liczba_2, int max)
+void zerujWieksze(int *ptr_liczba_1, int *adres_liczba_2, int max)
 {
 	/*for (auto it = 0; it < 5; it++) {
 		std::cout << *(&ptr_liczba_1 + it) << " o adresie: " << (&ptr_liczba_1 + it) << std::endl<<&it;
 	}*/
-	std::cout << *ptr_liczba_1 << ' ' << *adres_liczba_2 << *(0x00000020FB52F76C);
+	std::cout << *ptr_liczba_1 << ' ' << *adres_liczba_2;
 	/*for (auto it = &ptr_liczba_1;it <= &adres_liczba_2;it++)
 	{
 		std::cout << &it<<' ' << *(it++)<<'\n';
 	}*/
+}
+float* zero()
+{
+	int n;
+	std::cout << "Size of array: ";std::cin >> n;
+	float* tablica = new float[n];
+	for(int i = 0;i<n;i++)
+		tablica[i] = 0;
+	for (int i = 0;i < n;i++)
+		std::cout<<*(tablica +1)<<' ';
+	delete[]tablica;
+	tablica = NULL;
+	std::cout << '\n';
+	return tablica;
 }
 int main()
 {
@@ -513,16 +527,13 @@ int main()
 	//palindrom();
 	//szyfrCezara();
 	//wskazniki();
-	int tablica[] = {2, 5, 8, 10, 15};
-
+	
+	/*int tablica[] = {2, 5, 8, 10, 15};
 	for (auto it = 0; it < 5; it++) {
 		std::cout << tablica[it] << " o adresie: " << &tablica[it] << std::endl; 
 	}
-
-	int liczba_1 = tablica[0], liczba_2 = tablica[4], max = 10;
-	int wsk_poczatek = liczba_1;
-	int wsk_koniec = liczba_2;
-
-	ZerujWieksze(&wsk_poczatek, &wsk_koniec, max);
+	int wsk_poczatek = tablica[0], wsk_koniec = tablica[4], max = 10;
+	zerujWieksze(&wsk_poczatek, &wsk_koniec, max);*/
+	std::cout << zero();
 	return 0;
 }
