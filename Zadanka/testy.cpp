@@ -479,16 +479,14 @@ void wskazniki()
 		std::cout << *it<< ", ";
 	}
 }
-void zerujWieksze(int *ptr_liczba_1, int *adres_liczba_2, int max)
+void zerujWieksze(int *ptr_liczba_1, int max)
 {
-	/*for (auto it = 0; it < 5; it++) {
-		std::cout << *(&ptr_liczba_1 + it) << " o adresie: " << (&ptr_liczba_1 + it) << std::endl<<&it;
-	}*/
-	std::cout << *ptr_liczba_1 << ' ' << *adres_liczba_2;
-	/*for (auto it = &ptr_liczba_1;it <= &adres_liczba_2;it++)
+	for (int i = 0;i < 5;i++)
 	{
-		std::cout << &it<<' ' << *(it++)<<'\n';
-	}*/
+		if (*(ptr_liczba_1 + i) > max)
+			*(ptr_liczba_1 + i) = 0;
+		std::cout << *(ptr_liczba_1 + i)<<' ';
+	}
 }
 float* zero()
 {
@@ -504,7 +502,8 @@ float* zero()
 	std::cout << '\n';
 	return tablica;
 }
-int main()
+
+int main3()
 {
 	//timer();
 	//stopper();
@@ -527,13 +526,9 @@ int main()
 	//palindrom();
 	//szyfrCezara();
 	//wskazniki();
-	
-	/*int tablica[] = {2, 5, 8, 10, 15};
-	for (auto it = 0; it < 5; it++) {
-		std::cout << tablica[it] << " o adresie: " << &tablica[it] << std::endl; 
-	}
-	int wsk_poczatek = tablica[0], wsk_koniec = tablica[4], max = 10;
-	zerujWieksze(&wsk_poczatek, &wsk_koniec, max);*/
-	std::cout << zero();
+	//int tablica[5] = {2, 5, 8, 10, 15};
+	//int* wsk_poczatek = tablica, max = 10;
+	//zerujWieksze(wsk_poczatek, max);
+	//std::cout << zero();
 	return 0;
 }
